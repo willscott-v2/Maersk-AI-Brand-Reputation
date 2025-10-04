@@ -1,10 +1,11 @@
 /**
- * Complete GEO Master Class Presentation Generator
+ * Maersk AI Brand Reputation Presentation Generator
  * Version: 1.2.0
- * Last Updated: 2025-10-03
+ * Last Updated: 2025-10-04
  *
  * CHANGELOG:
- * 1.2.0 (2025-10-03)
+ * 1.2.0 (2025-10-04)
+ * - Updated for Maersk AI Brand Reputation presentation
  * - Fixed image insertion for all slides with chart_ref or media_ref
  * - Maintains aspect ratio for images and charts
  * - Improved image positioning and sizing
@@ -28,11 +29,11 @@
 
 // Script version constant
 const SCRIPT_VERSION = '1.2.0';
-const SCRIPT_RELEASE_DATE = '2025-10-03';
+const SCRIPT_RELEASE_DATE = '2025-10-04';
 
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
-  ui.createMenu('GEO Presentation')
+  ui.createMenu('Presentation Generator')
     .addItem('Generate Slides', 'generatePresentation')
     .addItem('Test Configuration', 'testConfig')
     .addItem('Validate Data', 'validateSlideData')
@@ -83,7 +84,7 @@ function generatePresentation() {
     const folder = spreadsheetFile.getParents().next();
 
     // Create new presentation with configured title
-    const presentationTitle = config['deck_title'] || 'GEO Master Class - ' + new Date().toLocaleDateString();
+    const presentationTitle = config['deck_title'] || 'Presentation - ' + new Date().toLocaleDateString();
     const presentation = SlidesApp.create(presentationTitle);
     const presentationId = presentation.getId();
     const presentationFile = DriveApp.getFileById(presentationId);
@@ -889,7 +890,7 @@ function fetchWithRetry(url, maxRetries = 3) {
         muteHttpExceptions: true,
         followRedirects: true,
         headers: {
-          'User-Agent': 'SMX-GEO-Generator/1.0.0',
+          'User-Agent': 'Maersk-Presentation-Generator/1.2.0',
           'Accept': 'text/plain,application/json,*/*'
         }
       });
@@ -1149,11 +1150,11 @@ function compareVersions(version1, version2) {
 function getCurrentVersion() {
   // Get current version from PropertiesService (persistent storage)
   const userProperties = PropertiesService.getUserProperties();
-  return userProperties.getProperty('GEO_GENERATOR_VERSION') || GITHUB_CONFIG.currentVersion;
+  return userProperties.getProperty('PRESENTATION_GENERATOR_VERSION') || GITHUB_CONFIG.currentVersion;
 }
 
 function setCurrentVersion(version) {
   // Store current version in PropertiesService
   const userProperties = PropertiesService.getUserProperties();
-  userProperties.setProperty('GEO_GENERATOR_VERSION', version);
+  userProperties.setProperty('PRESENTATION_GENERATOR_VERSION', version);
 }
