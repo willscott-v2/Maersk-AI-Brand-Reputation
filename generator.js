@@ -875,9 +875,9 @@ function validateSlideData() {
 // Version management configuration
 const GITHUB_CONFIG = {
   username: 'willscott-v2',
-  repo: 'smx-oct-slides',
+  repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.2.1'  // Stored locally, compared with GitHub
+  currentVersion: '1.2.0'  // Stored locally, compared with GitHub
 };
 
 // Helper function for robust fetching with retry logic
