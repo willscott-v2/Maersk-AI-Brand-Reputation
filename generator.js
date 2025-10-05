@@ -28,7 +28,7 @@
 // ============================================================================
 
 // Script version constant
-const SCRIPT_VERSION = '1.2.2';
+const SCRIPT_VERSION = '1.2.3';
 const SCRIPT_RELEASE_DATE = '2025-10-05';
 
 function onOpen() {
@@ -877,8 +877,14 @@ const GITHUB_CONFIG = {
   username: 'willscott-v2',
   repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.2.2'  // Stored locally, compared with GitHub
+  currentVersion: '1.2.3'  // Stored locally, compared with GitHub
 };
+
+// Custom CSV parser for pipe-delimited files
+function parsePipeDelimitedCsv(csvText) {
+  const lines = csvText.split('\n').filter(line => line.trim().length > 0);
+  return lines.map(line => line.split('|'));
+}
 
 // Helper function for robust fetching with retry logic
 function fetchWithRetry(url, maxRetries = 3) {
@@ -988,7 +994,7 @@ function previewUpdatesFromGitHub() {
           throw new Error(`Config parse failed: ${e.message}. First 100 chars: ${configContent.substring(0, 100)}`);
         }
         try {
-          githubSlidesData = Utilities.parseCsv(slidesContent, '|');
+          githubSlidesData = parsePipeDelimitedCsv(slidesContent);
         } catch (e) {
           throw new Error(`Slides parse failed: ${e.message}. First 100 chars: ${slidesContent.substring(0, 100)}`);
         }
@@ -1068,7 +1074,7 @@ function applyUpdatesFromGitHub() {
         throw new Error(`Config parse failed: ${e.message}. Content type: ${typeof configContent}, First 200 chars: ${configContent.substring(0, 200)}`);
       }
       try {
-        slidesData = Utilities.parseCsv(slidesContent, '|');
+        slidesData = parsePipeDelimitedCsv(slidesContent);
       } catch (e) {
         throw new Error(`Slides parse failed: ${e.message}. Content type: ${typeof slidesContent}, First 200 chars: ${slidesContent.substring(0, 200)}`);
       }
