@@ -1,10 +1,10 @@
 {
-  "version": "1.2.1",
+  "version": "1.2.2",
   "releaseDate": "2025-10-05",
   "description": "Maersk AI Brand Reputation Presentation",
   "changes": [
-    "Added detailed error debugging for auto-update feature",
-    "Improved CSV parsing error messages",
-    "Better troubleshooting for GitHub sync issues"
+    "Fixed line ending normalization for CSV parsing",
+    "Added UTF-8 encoding support for GitHub content",
+    "Resolved parseCsv failures with proper text handling"
   ]
 }

@@ -28,7 +28,7 @@
 // ============================================================================
 
 // Script version constant
-const SCRIPT_VERSION = '1.2.1';
+const SCRIPT_VERSION = '1.2.2';
 const SCRIPT_RELEASE_DATE = '2025-10-05';
 
 function onOpen() {
@@ -877,7 +877,7 @@ const GITHUB_CONFIG = {
   username: 'willscott-v2',
   repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.2.1'  // Stored locally, compared with GitHub
+  currentVersion: '1.2.2'  // Stored locally, compared with GitHub
 };
 
 // Helper function for robust fetching with retry logic
@@ -899,7 +899,10 @@ function fetchWithRetry(url, maxRetries = 3) {
       console.log(`Response code: ${responseCode}`);
 
       if (responseCode === 200) {
-        return response.getContentText();
+        // Get content with UTF-8 encoding explicitly
+        const content = response.getContentText('UTF-8');
+        // Normalize line endings to \n
+        return content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
       } else {
         throw new Error(`HTTP ${responseCode}: ${response.getContentText()}`);
       }
