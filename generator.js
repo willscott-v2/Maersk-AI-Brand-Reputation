@@ -1,9 +1,13 @@
 /**
  * Maersk AI Brand Reputation Presentation Generator
- * Version: 1.3.0
+ * Version: 1.3.1
  * Last Updated: 2025-10-05
  *
  * CHANGELOG:
+ * 1.3.1 (2025-10-05)
+ * - Fixed: config.csv now uses custom pipe parser (was using Utilities.parseCsv)
+ * - Both config and slides CSV files now parse correctly with pipe delimiters
+ *
  * 1.3.0 (2025-10-05)
  * - Added company name prefix to presentation title (from config['company'])
  * - Added timestamp to presentation title for version tracking
@@ -45,7 +49,7 @@
 // ============================================================================
 
 // Script version constant
-const SCRIPT_VERSION = '1.3.0';
+const SCRIPT_VERSION = '1.3.1';
 const SCRIPT_RELEASE_DATE = '2025-10-05';
 
 function onOpen() {
@@ -903,7 +907,7 @@ const GITHUB_CONFIG = {
   username: 'willscott-v2',
   repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.3.0'  // Stored locally, compared with GitHub
+  currentVersion: '1.3.1'  // Stored locally, compared with GitHub
 };
 
 // Custom CSV parser for pipe-delimited files
@@ -1012,10 +1016,10 @@ function previewUpdatesFromGitHub() {
         const configContent = fetchWithRetry(CONFIG_URL);
         const slidesContent = fetchWithRetry(SLIDES_URL);
 
-        // Parse CSV with better error handling
+        // Parse CSV with better error handling (both use pipe delimiters)
         let githubConfigData, githubSlidesData;
         try {
-          githubConfigData = Utilities.parseCsv(configContent);
+          githubConfigData = parsePipeDelimitedCsv(configContent);
         } catch (e) {
           throw new Error(`Config parse failed: ${e.message}. First 100 chars: ${configContent.substring(0, 100)}`);
         }
@@ -1095,7 +1099,7 @@ function applyUpdatesFromGitHub() {
       // Parse data with better error handling
       let configData, slidesData, versionData;
       try {
-        configData = Utilities.parseCsv(configContent);
+        configData = parsePipeDelimitedCsv(configContent);
       } catch (e) {
         throw new Error(`Config parse failed: ${e.message}. Content type: ${typeof configContent}, First 200 chars: ${configContent.substring(0, 200)}`);
       }

@@ -1,10 +1,10 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "releaseDate": "2025-10-05",
   "description": "Maersk AI Brand Reputation Presentation",
   "changes": [
-    "Added company name prefix to presentation titles",
-    "Added timestamp to presentation titles for version tracking",
-    "Format: [Company] Title - YYYY-MM-DD HH:mm"
+    "Fixed config.csv parsing to use pipe delimiter parser",
+    "Both config and slides now parse correctly in auto-update",
+    "Resolves column separation issues in imported sheets"
   ]
 }
