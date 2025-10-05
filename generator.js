@@ -40,9 +40,6 @@ function onOpen() {
     .addSeparator()
     .addItem('🔍 Test One Slide', 'testSlideCreation')
     .addSeparator()
-    .addItem('🔄 Preview Updates (Safe)', 'previewUpdatesFromGitHub')
-    .addItem('📥 Apply Updates', 'applyUpdatesFromGitHub')
-    .addSeparator()
     .addItem('ℹ️ Script Version', 'showScriptVersion')
     .addToUi();
 }
