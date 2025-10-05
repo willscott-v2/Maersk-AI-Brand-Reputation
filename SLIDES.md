@@ -255,7 +255,36 @@ Don't put all eggs in one basket. You need presence across the spectrum of trust
 
 ---
 
-## Slide 19: Section 3 Takeaways
+## Slide 19: Entity Mapping and Knowledge Graphs
+**Subtitle:** How AI understands your brand
+
+**Bullets:**
+- Named entities: Not keywords but recognized concepts with distinct meaning
+- Knowledge Graph: Google's entity database connecting people, places, companies
+- Entity connections: Who you're associated with matters (partners, competitors, industries)
+- Wikipedia presence: Critical for entity recognition across all models
+
+**Speaker Notes:**
+AI doesn't just match keywords - it understands concepts. An entity is any concept with distinct meaning. Maersk isn't just a word, it's a recognized shipping company entity with attributes, relationships, and context.
+
+---
+
+## Slide 20: Citations and Direct Quotes
+**Subtitle:** The currency of AI visibility
+
+**Bullets:**
+- Direct quotes with attribution get highest weight in AI responses
+- Executive statements on record become model training data
+- Press releases and official communications are cited sources
+- Community validation: Multiple independent sources citing you increases authority
+- Earned media citations build credibility that owned content alone cannot
+
+**Speaker Notes:**
+Citations are the currency of AI visibility. When multiple authoritative sources directly quote your executives or cite your company, models treat that as strong signal. This is why PR and earned media still matter - perhaps more than ever.
+
+---
+
+## Slide 21: Section 3 Takeaways
 **Subtitle:** Where models learn
 
 **Bullets:**
@@ -357,7 +386,7 @@ Data from the field.
 
 ---
 
-## Slide 27: AI Overview Traffic Impact
+## Slide 29: AI Overview Traffic Impact
 **Subtitle:** The 60% drop
 
 **Bullets:**
@@ -371,7 +400,21 @@ This is why being IN the answer matters. If you're only optimized to get clicks,
 
 ---
 
-## Slide 28: Comparison Content Dominates
+## Slide 30: Maersk Keyword AI Overview Analysis
+**Subtitle:** [SEMRUSH DATA PLACEHOLDER]
+
+**Bullets:**
+- [Will to provide: SEMrush report showing which Maersk keywords trigger AI Overviews]
+- Industry-specific penetration rates
+- Competitive comparison opportunities
+- Strategic keyword prioritization
+
+**Speaker Notes:**
+ACTION ITEM (Will): Run SEMrush analysis on Maersk's target keywords to identify which ones trigger AI Overviews. This will show where we're already present in AI and where there are gaps to fill.
+
+---
+
+## Slide 31: Comparison Content Dominates
 **Subtitle:** "X vs Y" queries are critical
 
 **Bullets:**
