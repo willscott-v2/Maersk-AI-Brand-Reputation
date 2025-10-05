@@ -1,9 +1,22 @@
 /**
  * Maersk AI Brand Reputation Presentation Generator
- * Version: 1.2.0
- * Last Updated: 2025-10-04
+ * Version: 1.2.3
+ * Last Updated: 2025-10-05
  *
  * CHANGELOG:
+ * 1.2.3 (2025-10-05)
+ * - Added custom pipe-delimited CSV parser
+ * - Fixed slides.csv parsing to preserve all fields correctly
+ * - Replaced unreliable Utilities.parseCsv with simple split function
+ *
+ * 1.2.2 (2025-10-05)
+ * - Fixed line ending normalization for CSV parsing
+ * - Added UTF-8 encoding support for GitHub content
+ *
+ * 1.2.1 (2025-10-05)
+ * - Added detailed error debugging for auto-update feature
+ * - Improved CSV parsing error messages
+ *
  * 1.2.0 (2025-10-04)
  * - Updated for Maersk AI Brand Reputation presentation
  * - Fixed image insertion for all slides with chart_ref or media_ref
@@ -15,7 +28,6 @@
  * - Added real image insertion from Google Drive
  * - Removed redundant menu functions
  * - Enhanced error handling with retry logic
- * - Fixed image and chart placeholder functions
  *
  * 1.0.0 (2025-10-03)
  * - Initial release with auto-update functionality
