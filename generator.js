@@ -40,6 +40,9 @@ function onOpen() {
     .addSeparator()
     .addItem('🔍 Test One Slide', 'testSlideCreation')
     .addSeparator()
+    .addItem('🔄 Preview Updates (Safe)', 'previewUpdatesFromGitHub')
+    .addItem('📥 Apply Updates', 'applyUpdatesFromGitHub')
+    .addSeparator()
     .addItem('ℹ️ Script Version', 'showScriptVersion')
     .addToUi();
 }
@@ -974,8 +977,18 @@ function previewUpdatesFromGitHub() {
         const configContent = fetchWithRetry(CONFIG_URL);
         const slidesContent = fetchWithRetry(SLIDES_URL);
 
-        const githubConfigData = Utilities.parseCsv(configContent);
-        const githubSlidesData = Utilities.parseCsv(slidesContent, '|');
+        // Parse CSV with better error handling
+        let githubConfigData, githubSlidesData;
+        try {
+          githubConfigData = Utilities.parseCsv(configContent);
+        } catch (e) {
+          throw new Error(`Config parse failed: ${e.message}. First 100 chars: ${configContent.substring(0, 100)}`);
+        }
+        try {
+          githubSlidesData = Utilities.parseCsv(slidesContent, '|');
+        } catch (e) {
+          throw new Error(`Slides parse failed: ${e.message}. First 100 chars: ${slidesContent.substring(0, 100)}`);
+        }
 
         report += `📊 DATA COMPARISON:\n`;
         report += `   Config:  ${Object.keys(currentConfig).length} settings (local) vs ${githubConfigData.length - 1} (GitHub)\n`;
@@ -1044,9 +1057,23 @@ function applyUpdatesFromGitHub() {
       const slidesContent = fetchWithRetry(SLIDES_URL);
       const versionContent = fetchWithRetry(VERSION_URL);
 
-      const configData = Utilities.parseCsv(configContent);
-      const slidesData = Utilities.parseCsv(slidesContent, '|');
-      const versionData = JSON.parse(versionContent);
+      // Parse data with better error handling
+      let configData, slidesData, versionData;
+      try {
+        configData = Utilities.parseCsv(configContent);
+      } catch (e) {
+        throw new Error(`Config parse failed: ${e.message}. Content type: ${typeof configContent}, First 200 chars: ${configContent.substring(0, 200)}`);
+      }
+      try {
+        slidesData = Utilities.parseCsv(slidesContent, '|');
+      } catch (e) {
+        throw new Error(`Slides parse failed: ${e.message}. Content type: ${typeof slidesContent}, First 200 chars: ${slidesContent.substring(0, 200)}`);
+      }
+      try {
+        versionData = JSON.parse(versionContent);
+      } catch (e) {
+        throw new Error(`Version JSON parse failed: ${e.message}. Content: ${versionContent}`);
+      }
 
       // Update Config sheet
       const configSheet = ss.getSheetByName('Config');
