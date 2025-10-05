@@ -1,10 +1,10 @@
 {
-  "version": "1.2.0",
-  "releaseDate": "2025-10-04",
+  "version": "1.2.1",
+  "releaseDate": "2025-10-05",
   "description": "Maersk AI Brand Reputation Presentation",
   "changes": [
-    "Initial release: 90-minute presentation on Generative AI and Brand Reputation",
-    "36 slides with detailed speaker notes",
-    "5 main sections plus Q&A"
+    "Added detailed error debugging for auto-update feature",
+    "Improved CSV parsing error messages",
+    "Better troubleshooting for GitHub sync issues"
   ]
 }

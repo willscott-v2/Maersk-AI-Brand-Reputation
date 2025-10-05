@@ -28,8 +28,8 @@
 // ============================================================================
 
 // Script version constant
-const SCRIPT_VERSION = '1.2.0';
-const SCRIPT_RELEASE_DATE = '2025-10-04';
+const SCRIPT_VERSION = '1.2.1';
+const SCRIPT_RELEASE_DATE = '2025-10-05';
 
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
@@ -877,7 +877,7 @@ const GITHUB_CONFIG = {
   username: 'willscott-v2',
   repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.2.0'  // Stored locally, compared with GitHub
+  currentVersion: '1.2.1'  // Stored locally, compared with GitHub
 };
 
 // Helper function for robust fetching with retry logic
