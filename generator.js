@@ -1,9 +1,14 @@
 /**
  * Maersk AI Brand Reputation Presentation Generator
- * Version: 1.2.3
+ * Version: 1.3.0
  * Last Updated: 2025-10-05
  *
  * CHANGELOG:
+ * 1.3.0 (2025-10-05)
+ * - Added company name prefix to presentation title (from config['company'])
+ * - Added timestamp to presentation title for version tracking
+ * - Format: "[Company] Title - YYYY-MM-DD HH:mm"
+ *
  * 1.2.3 (2025-10-05)
  * - Added custom pipe-delimited CSV parser
  * - Fixed slides.csv parsing to preserve all fields correctly
@@ -40,7 +45,7 @@
 // ============================================================================
 
 // Script version constant
-const SCRIPT_VERSION = '1.2.3';
+const SCRIPT_VERSION = '1.3.0';
 const SCRIPT_RELEASE_DATE = '2025-10-05';
 
 function onOpen() {
@@ -95,8 +100,17 @@ function generatePresentation() {
     const spreadsheetFile = DriveApp.getFileById(ss.getId());
     const folder = spreadsheetFile.getParents().next();
 
-    // Create new presentation with configured title
-    const presentationTitle = config['deck_title'] || 'Presentation - ' + new Date().toLocaleDateString();
+    // Create new presentation with configured title, company name, and timestamp
+    const baseTi = config['deck_title'] || 'Presentation';
+    const company = config['company'] || '';
+    const timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
+
+    let presentationTitle = baseTi;
+    if (company) {
+      presentationTitle = `[${company}] ${baseTi}`;
+    }
+    presentationTitle += ` - ${timestamp}`;
+
     const presentation = SlidesApp.create(presentationTitle);
     const presentationId = presentation.getId();
     const presentationFile = DriveApp.getFileById(presentationId);
@@ -889,7 +903,7 @@ const GITHUB_CONFIG = {
   username: 'willscott-v2',
   repo: 'Maersk-AI-Brand-Reputation',
   branch: 'main',  // or 'v1.0', 'stable', etc.
-  currentVersion: '1.2.3'  // Stored locally, compared with GitHub
+  currentVersion: '1.3.0'  // Stored locally, compared with GitHub
 };
 
 // Custom CSV parser for pipe-delimited files

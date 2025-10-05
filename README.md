@@ -48,10 +48,14 @@ Edit `slides.csv` to add new slides. Key columns:
 
 ### Configuration
 Edit `config.csv` to change:
-- Presentation title
-- Presenter details
-- Duration and timing
-- Visual styling
+- **deck_title**: Base presentation title
+- **company**: Company name (will prefix title as `[Company] Title`)
+- **presenter_name**: Your name
+- **presentation_date**: Date of presentation
+- Duration and timing settings
+- Visual styling (theme colors, fonts)
+
+**Note:** Generated presentations will be named: `[Company] Title - YYYY-MM-DD HH:mm` for easy version tracking.
 
 ## Quick Tips
 
